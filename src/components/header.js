@@ -4,6 +4,25 @@ const Header = (title, date, temp) => {
   // Implement this function taking `title`, `date` and `temp` as its 3 args and returning the markup below.
   // The html tags used, the hierarchy of elements and their attributes must match the provided markup exactly!
   // The text inside elements will be set using their `textContent` property (NOT `innerText`).
+  const headContainer = document.createElement('div');
+  const dateBox = document.createElement('span');
+  const titleBox = document.createElement('h1');
+  const tempBox = document.createElement('span');
+
+  //content
+  dateBox.textContent = date;
+  titleBox.textContent = title;
+  tempBox.textContent = temp;
+
+  //classes
+  headContainer.classList.add('header');
+  dateBox.classList.add('date');
+  tempBox.classList.add('temp');
+
+  //append
+  headContainer.appendChild(dateBox);
+  headContainer.appendChild(titleBox);
+  headContainer.appendChild(tempBox);
   //
   //  <div class="header">
   //    <span class="date">{ date }</span>
@@ -11,9 +30,13 @@ const Header = (title, date, temp) => {
   //    <span class="temp">{ temp }</span>
   //  </div>
   //
+  return headContainer;
 }
 
 const headerAppender = (selector) => {
+  const currentSelector = document.querySelector(selector);
+  const header = Header('BloomTech News', 'Sept 12, 2023', '90*');
+  currentSelector.appendChild(header);
   // TASK 2
   // ---------------------
   // Implement this function taking a css selector as its only argument.
